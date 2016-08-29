@@ -17,7 +17,7 @@ def main():
 
 @app.route('/index')
 def index():
-  downloadStockForKey("FB")
+  downloadStockForKey("")
   return render_template('index.html')
 
 def downloadStockForKey(key):
@@ -26,8 +26,10 @@ def downloadStockForKey(key):
   
 
   """
-  r = requests.get(QUANDL_URL + key + ".json", params = {"api_key": API_KEY}, auth=('user', 'pass'))
+  r = requests.get(QUANDL_URL + "FB.json", params = {"api_key": API_KEY}, auth=('user', 'pass'))
   print(r.json())
 
 if __name__ == '__main__':
   app.run(port=33507)
+
+
