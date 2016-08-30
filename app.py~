@@ -1,5 +1,6 @@
 import simplejson as json
 import requests
+import pandas as pd
 from flask import Flask, render_template, request, redirect
 
 ###
@@ -7,29 +8,47 @@ from flask import Flask, render_template, request, redirect
 
 API_KEY = "AQxy1jwjCgs9_xDvJ8bY"
 QUANDL_URL = "https://www.quandl.com/api/v3/datasets/WIKI/"
+
+#Keys
+keys = ['closing_price', 'adjusted_closing_price', 'opening_price','adjusted_opening_price']
+
 ###
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/', methods=['POST','GET'])
 def main():
   return redirect('/index')
 
-@app.route('/index')
+@app.route('/index', methods=['POST','GET'])
 def index():
-  downloadStockForKey("")
+
+  if request.method == 'POST':
+    L =  [request.form.get(key) == key for key in keys]
+    
+    print("Stock ticker = " + request.form.get('ticker'))
+    data = downloadStockForKey(request.form.get('ticker'))
+    print("checked boxes = " + str(L))
+    return render_template('plot.html', data=str(data))
   return render_template('index.html')
 
 def downloadStockForKey(key):
   """
-  Download stock data from Quandl.com for. 
-  
-
+  Download stock data from Quandl.com for.
   """
-  r = requests.get(QUANDL_URL + "FB.json", params = {"api_key": API_KEY}, auth=('user', 'pass'))
-  print(r.json())
+
+  key = key.upper()
+  r = requests.get(QUANDL_URL + key + ".json", params = {"api_key": API_KEY}, auth=('user', 'pass'))
+  column_names = r.json()['dataset']['column_names']
+  data = r.json()['dataset']['data']
+  
+  print column_names
+  df = pd.DataFrame(data)
+  #print(column_names)
+  #print (type(column_names))
+  #print("currently set columns = " + str(df.columns))
+  #df.columns  = column_names
+  return df
 
 if __name__ == '__main__':
   app.run(port=33507)
-
-
