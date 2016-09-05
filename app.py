@@ -35,32 +35,37 @@ def downloadStockForKey(key):
   """
   Download stock data from Quandl.com for.
   """
+
+  try:
+    key = key.upper()
+    r = requests.get(QUANDL_URL + key + ".json", params = {"api_key": API_KEY}, auth=('user', 'pass'))
+    column_names = r.json()['dataset']['column_names']
+    data = r.json()['dataset']['data']
+    print column_names
+    
+    #Identify selected columns
+    L = [key for key in keys if request.form.get(key) in keys]
+    L.insert(0, 'Date')
   
+    df = pd.DataFrame(data, columns = column_names)
+    df = df[L]
+    df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d')
 
-  key = key.upper()
-  r = requests.get(QUANDL_URL + key + ".json", params = {"api_key": API_KEY}, auth=('user', 'pass'))
-  column_names = r.json()['dataset']['column_names']
-  data = r.json()['dataset']['data']
-  print column_names
-
-  #Identify selected columns
-  L = [key for key in keys if request.form.get(key) in keys]
-  L.insert(0, 'Date')
-  
-  df = pd.DataFrame(data, columns = column_names)
-  df = df[L]
-  df['Date'] = pd.to_datetime(df['Date'], format='%Y-%m-%d')
-
-  print df
-  return df, L
+    print df
+    return df, L
+  except Exception:
+    return None, []
 
 def plot_data(df, L):
   
-  
+  errortitle = ""
   plot = figure(title='Data from Quandle WIKI set',
               x_axis_label='date',
               x_axis_type='datetime')
 
+  if len(L) <= 1:
+    errortitle = "Error downloading and processing data. Try again. Check that the stock ticker was entered correctly and at least one checkbox was selected."
+  
   for column in L:
 
     if column == 'Date':
@@ -77,7 +82,8 @@ def plot_data(df, L):
 
   script, div = components(plot)
 
-  return render_template('plot.html', script=script, div=div)
+  return render_template('plot.html', script=script, div=div, errortitle = errortitle )
+
 
 if __name__ == '__main__':
   app.run(port=33507)
