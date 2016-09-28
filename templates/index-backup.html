@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>User Input</title>
+		<h1>Please enter a stock ticker, eg GOOG, and check desired features.</h1>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+	  <form id='stock_ticker' method='post' action='index'>
+	    <!--Stock Ticker Name -->
+	    Stock Ticker Name: <input type='text' name='ticker'/> <br>
+	    
+	    <!--Checkboxes -->
+	    <label><input type="checkbox" id="closing_price" value="Close" name="Close"> Closing Price</label><br>
+	    <input type="checkbox" id="adjusted_closing_price" value="Adj. Close" name="Adj. Close" > <label for="Adj. Close"> Adjusted Closing Price</label><br>
+	    <label><input type="checkbox" id="opening_price" value="Open" name="Open"> Opening Price</label><br>
+	    <label><input type="checkbox" id="adjusted_opening_price" value="Adj. Open" name="Adj. Open"> Adjusted Opening Price</label><br>
+	    <input type='submit' value='Submit'>
+	  </form>
+	</body>
+</html>

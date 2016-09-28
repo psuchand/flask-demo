@@ -1,24 +1,154 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>User Input</title>
-		<h1>Please enter a stock ticker, eg GOOG, and check desired features.</h1>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	</head>
-	<body>
-	  <form id='stock_ticker' method='post' action='index'>
-	    <!--Stock Ticker Name -->
-	    Stock Ticker Name: <input type='text' name='ticker'/> <br>
-	    
-	    <!--Checkboxes -->
-	    <label><input type="checkbox" id="closing_price" value="Close" name="Close"> Closing Price</label><br>
-	    <input type="checkbox" id="adjusted_closing_price" value="Adj. Close" name="Adj. Close" > <label for="Adj. Close"> Adjusted Closing Price</label><br>
-	    <label><input type="checkbox" id="opening_price" value="Open" name="Open"> Opening Price</label><br>
-	    <label><input type="checkbox" id="adjusted_opening_price" value="Adj. Open" name="Adj. Open"> Adjusted Opening Price</label><br>
-	    <input type='submit' value='Submit'>
-	  </form>
-	</body>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Optimal Strategies for NYC Taxi Drivers</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="static/css/scrolling-nav.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<!-- The #page-top ID is part of the scrolling feature - the data-spy and data-target are part of the built-in Bootstrap scrollspy function -->
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Begin</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a class="page-scroll" href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">Better Drivers</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Better Strategies</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#services">Our Predictive Engine</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#explore">Explore</a>
+                    </li>
+
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Section -->
+    <section id="intro" class="intro-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Learn strategies from the best</h1>
+                    <p>Do you have a fleet of taxis? We've mined for the best strategies so your drivers can make more money.</p>
+                    <a class="btn btn-default page-scroll" href="#about">Learn more!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>The best drivers make more money.</h2>
+                    <IMG SRC="static/img/hourly-wage-for-good-and-bad-drivers.png" height="500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3>Better Drivers have Better Strategies</h3>
+                    <p>Better drivers frequent different locations. For example, roughly the same number of good and bad drivers go to La'Guardia on weekday mornings, and they make the same amount of money from their fares there on average. The difference however is waiting time before they find a customer. </p>
+<img src="static/img/laguardia-good-drivers.png" style="float: left; width: 40%; margin-right: 1%; margin-bottom: 0.5em;">
+<img src="static/img/laguardia-bad-drivers.png" style="float: left; width: 38%; margin-right: 1%; margin-bottom: 0.5em;">
+                    <p>Better drivers don't go frequent this parking structure near LGA on weekday mornings. They do however frequent the nearby coffee shop.</p>
+<p style="clear: both;">
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Our Predictive Engine Works</h2>
+                    <ol> <li><strong>Naive Strategy:</strong> Make pickups in the same general region where you drop off your last customer. Drivers following this strategy would make about $45 from 9am-10am on a weekday at Times Square, which is about average.</li>
+                    <li> <strong>Informed Strategy:</strong> Look at positions that good drivers frequent and instead drive to the most profitable location to find customers. You can see the difference below. Drivers following this stragegy make about $70 from 9am-10am on a weekday at Times Square, which is about as good as drivers that are idle less than 15% of the time. </li>
+                    </ol>
+                    <img src="static/img/good-and-naive-strategy.png" height="500">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Explore Section -->
+    <section id="explore" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Study heatmaps to identify locations frequented by good and poorly preforming drivers here.</h2>
+                <a class="btn btn-default page-scroll" href="/static/heatmap-good-drivers.html">Good Drivers</a>
+                <a class="btn btn-default page-scroll" href="/static/heatmap-bad-drivers.html">Poorly Preforming Drivers</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="static/js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="static/js/bootstrap.min.js"></script>
+
+    <!-- Scrolling Nav JavaScript -->
+    <script src="static/js/jquery.easing.min.js"></script>
+    <script src="static/js/scrolling-nav.js"></script>
+</body>
 </html>
