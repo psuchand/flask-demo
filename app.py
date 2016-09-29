@@ -14,6 +14,15 @@ def homepage():
     except Exception, e:
         return str(e)
 
+@app.route('/jackson-heights.html')
+def homepage():
+
+    try:
+        return render_template("jackson-heights.html")
+    except Exception, e:
+        return str(e)
+
+
 @app.route('/about')
 def aboutpage():
 
