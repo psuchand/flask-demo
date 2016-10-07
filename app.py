@@ -39,6 +39,13 @@ def contactPage():
 
     return render_template("index.html", title=title, paragraph=paragraph, pageType=pageType)
 
+@app.route('/simulation/<float:longitude>/<float:latitude>')
+def aboutpage():
+
+    pos = "(%.2f, %.2f)"%(longitude,latitude)
+    print "pos = " + pos
+
+    return render_template("simulation.html", simulation_results = pos)
 
  
 if __name__ == "__main__":
