@@ -1,16 +1,14 @@
 
 from flask import Flask, render_template
- 
+from ml_helper_functions import *
+
 app = Flask(__name__)
 
 @app.route('/')
 def homepage():
 
-    title = "Epic Tutorials"
-    paragraph = ["wow I am learning so much great stuff!wow I am learning so much great stuff!wow I am learning so much great stuff!wow I am learning so much great stuff!","wow I am learning so much great stuff!wow I am learning so much great stuff!wow I am learning so much great stuff!wow I am learning so much great stuff!wow I am learning so much great stuff!wow I am learning so much great stuff!wow I am learning so much great stuff!wow I am learning so much great stuff!wow I am learning so much great stuff!"]
-
     try:
-        return render_template("index.html", title = title, paragraph=paragraph)
+        return render_template("index.html")
     except Exception, e:
         return str(e)
 
@@ -18,32 +16,13 @@ def homepage():
 def jackson_heights():
   return render_template("jackson-heights.html")
 
-@app.route('/about')
-def aboutpage():
 
-    title = "About this site"
-    paragraph = ["blah blah blah memememememmeme blah blah memememe"]
+@app.route('/simulation/<longitude>/<latitude>')
+def show_simulation_results(longitude,latitude):
+    print "show_simulation_results"
 
-    pageType = 'about'
-
-    return render_template("index.html", title=title, paragraph=paragraph, pageType=pageType)
-
-
-@app.route('/about/contact')
-def contactPage():
-
-    title = "About this site"
-    paragraph = ["blah blah blah memememememmeme blah blah memememe"]
-
-    pageType = 'about'
-
-    return render_template("index.html", title=title, paragraph=paragraph, pageType=pageType)
-
-@app.route('/simulation/<float:longitude>/<float:latitude>')
-def aboutpage():
-
-    pos = "(%.2f, %.2f)"%(longitude,latitude)
-    print "pos = " + pos
+    pos = "(%s, %s)"%(longitude,latitude)
+    simulate_naive_trajectory
 
     return render_template("simulation.html", simulation_results = pos)
 
